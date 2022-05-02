@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return \Inertia\Inertia::render('Auth/Login');
+})->middleware('guest');
+
+Route::prefix('apps')->group(function(){
+
+    //middleware "auth"
+    Route::group(['middleware'=>['auth']],function(){
+        //route dashboard
+        Route::get('dashboard',App\Http\Controllers\Apps\DashboardController::class)->name('apps.dashboard');
+    });
 });
