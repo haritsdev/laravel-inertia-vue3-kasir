@@ -35,7 +35,7 @@ class DashboardController extends Controller
 
         if (count($chart_sales_week)) {
             foreach ($chart_sales_week as $result) {
-                $sales_data[] = $result->date;
+                $sales_date[] = $result->date;
                 $grand_total[] = (int)$result->grand_total;
             }
         } else {
